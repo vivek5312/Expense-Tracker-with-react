@@ -1,7 +1,16 @@
+import { useState } from "react";
+import NewExpenses from "./NewExpense/NewExpenses";
 import ExpenseItem from "./Components/Expenses/ExpenseItem";
 
-function App() {
-  const expense = [
+function App(props) {
+  const [enterExpense,setExpense]=useState([]);
+  const AddExpenseHandler = (expenseData) => {
+    setExpense((prevExpenses) => {
+      return [...prevExpenses, expenseData];
+    });
+  };
+
+ /*  const expense = [
     {
       id: "e1",
       title: "Car Insurance",
@@ -38,16 +47,21 @@ function App() {
       location:"Kadodra",
     }
   ];
-
+ */
+ 
+  
   const expenseItem=[];
-  for(let i=0;i<expense.length;i++){
+  for(let i=0;i<enterExpense.length;i++){
     expenseItem.push(
-    <ExpenseItem title={expense[i].title} amount={expense[i].amount} date={expense[i].date} location={expense[i].location}></ExpenseItem>
+    <ExpenseItem title={enterExpense[i].title} amount={enterExpense[i].amount} date={enterExpense[i].date} location={enterExpense[i].location}></ExpenseItem>
   )}
+
+ 
+
   return (
     <div className="App">
+     <NewExpenses onAddExpense={AddExpenseHandler}></NewExpenses>
      {expenseItem}  
-     
     
      
     </div>
