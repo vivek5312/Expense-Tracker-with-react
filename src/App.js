@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ExpenseItem from "./Components/Expenses/ExpenseItem";
 import NewExpenses from "./NewExpense/NewExpenses";
 import ExpensesFilter from "./Components/Expenses/ExpensesFilter";
+import ExpenseChart from "./Components/Expenses/ExpenseChart";
 
 const Dummyexpense = [
   {
@@ -77,6 +78,7 @@ if(filteredExpenses.length>0){
     <div className="App">
     <NewExpenses onAddExpense={addExpenseHandler} />
     <ExpensesFilter selected={filteredYear} onChangeFilter={handleFilterChange} />
+    <ExpenseChart expenses={filteredExpenses}/>
     {ExpenseContent}
       
   </div>
